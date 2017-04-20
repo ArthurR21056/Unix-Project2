@@ -106,6 +106,13 @@ int mysh_execPipe(char** pipes){
 int mycd(char **args){
 if (args[1] == NULL) //args[1] is target directory 
        fprintf(stderr, "mycd expects an argument \n");
+else 
+{
+	if(chdir(args[1]) != 0){
+		perror("Error");
+	}
+	return 1;
+}
 }
 
 void set_env_variables(){
